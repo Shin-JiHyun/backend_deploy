@@ -21,6 +21,12 @@ public class ProductController {
             return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/create2")
+    public ResponseEntity<ProductDto.ProductRes> create2(
+            @RequestBody ProductDto.CreateReq2 dto) {
+        ProductDto.ProductRes response = productService.preSigned(dto);
+        return ResponseEntity.ok(response);
+    }
 
     @GetMapping("/list")
     public ResponseEntity<List<ProductDto.ProductResponse>> getAllProducts(int page, int size) {

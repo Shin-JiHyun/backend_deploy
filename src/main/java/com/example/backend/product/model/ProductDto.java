@@ -1,9 +1,6 @@
 package com.example.backend.product.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -41,6 +38,19 @@ public class ProductDto {
         }
 
     }
+    @Getter
+    public static class CreateReq2 {
+        private String name;
+        private int price;
+        private List<String> files;
+
+        public Product toEntity() {
+            return Product.builder()
+                    .name(name)
+                    .price(price)
+                    .build();
+        }
+    }
 
     @Getter
     public static class CreateReq {
@@ -60,6 +70,7 @@ public class ProductDto {
         private Long idx;
         private String name;
         private int price;
+        @Setter
         private List<String> imageUrls;
 
         public static ProductRes of(Product entity) {
